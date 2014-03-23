@@ -6,7 +6,7 @@
 uint8_t activeButton, patternStep = 0, pattern[STEPS];
 uint8_t buttons[] = {3, 4, 5, 7};
 uint8_t leds[] = {6, 9, 10, 11};
-uint16_t notes[] = {NOTE_C4, NOTE_G3, NOTE_E3, NOTE_C3};
+uint16_t notes[] = {NOTE_FS4, NOTE_DS4, NOTE_CS4, NOTE_GS3, NOTE_FS1};
 
 byte buttonState[] {LOW, LOW, LOW, LOW};
   
@@ -17,7 +17,7 @@ void setup() {
     pinMode(leds[i], OUTPUT);
     digitalWrite(leds[i], HIGH);
     tone(SPEAKER, notes[i]);
-    delay(250);
+    delay(220);
     noTone(SPEAKER);
     digitalWrite(leds[i], LOW);
   }
@@ -29,11 +29,6 @@ void setup() {
 }
 
 void loop() {
-  while(patternStep != STEPS) {
-    playPattern(patternStep);
-    //sense(patternStep);
-    patternStep++;
-  }
 }
 
 void playPattern(uint8_t toStep) {
